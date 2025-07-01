@@ -4,10 +4,10 @@ run-pure:
 run-lang:
 	uvicorn lang:app --host 0.0.0.0 --port 8000 --app-dir naive
 
-run-pure-celery:
+run-pure-queue:
 	uvicorn pure:app --host 0.0.0.0 --port 8000 --app-dir queue
 
-run-lang-celery:
+run-lang-queue:
 	uvicorn lang:app --host 0.0.0.0 --port 8000 --app-dir queue
 
 loadtest:

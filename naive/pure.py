@@ -20,7 +20,7 @@ async def dummy_tool(input_text):
     }
     start_time = time.time()
     async with httpx.AsyncClient() as client:
-        response = await client.post(OLLAMA_API_URL, json=payload)
+        response = await client.post(OLLAMA_API_URL, json=payload, timeout=60)
     elapsed = time.time() - start_time
 
     if response.status_code == 200:

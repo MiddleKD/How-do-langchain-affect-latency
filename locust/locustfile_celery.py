@@ -29,7 +29,7 @@ class CeleryLoadTestUser(HttpUser):
 
         # 2) /result/{task_id} 폴링 처리 — 별도 context manager 사용
         max_wait_time = 30
-        poll_interval = 2
+        poll_interval = 0.1
         total_wait = 0
         while total_wait < max_wait_time:
             with self.client.get(f"/result/{task_id}", catch_response=True) as result_response:
