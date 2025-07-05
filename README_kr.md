@@ -2,6 +2,14 @@
 
 Langchain과 Celery가 성능에 주는 영향 비교 테스트
 
+## ❗❗❗아래 테스트 내용들은 잘못된 전제해서 진행이 되었습니다.
+- Langchain은 내부적으로 httpxclient를 재사용합니다.
+- 하지만 제가 작성한 pure python 백엔드는 httpxclient를 재사용하지 않고 매번 새로 생성합니다.
+- 위와 같은 구현 차이로 인해 **Langchain이 부하를 더 견디지 못한다는 것은 틀린 내용**입니다.
+- **httpxclient의 connection pool을 늘리거나 celery 혹은 구니콘 multi worker를 사용하면 Langchain의 client 재사용으로 인한 성능 하락은 없습니다.**
+
+---
+
 ## 공통 설정
 
 * **LLM Backend**: Ollama (llama3.1 / RTX 4090)

@@ -2,6 +2,14 @@
 
 A load test comparing how much LangChain and Celery impact API latency.
 
+## ❗❗❗The test results below are based on a wrong premise.
+- Langchain reuses httpxclient internally.
+- However, the pure python backend I wrote does not reuse httpxclient and creates a new one every time.
+- Due to this implementation difference, **Langchain being unable to withstand the load is a false conclusion**.
+- **Increasing the connection pool of httpxclient or using celery or gunicorn multi worker can eliminate the performance degradation due to Langchain's client reuse.**
+
+---
+
 ## Common Test Setup
 
 * **LLM Backend**: Ollama (llama3.1 / RTX 4090)
