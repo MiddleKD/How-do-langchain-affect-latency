@@ -7,8 +7,10 @@ requires-python = ">=3.13"
 dependencies = [
     "celery[redis]>=5.5.3",
     "fastapi>=0.115.14",
-    "langchain-core>=0.3.67",
-    "langchain-ollama>=0.3.3",
+    # "langchain-core>=0.3.67",
+    # "langchain-ollama>=0.3.3",
     "locust>=2.37.11",
+    "py-spy>=0.4.0",
+    "pyinstrument>=5.0.3",
     "uvicorn>=0.35.0",
 ]
