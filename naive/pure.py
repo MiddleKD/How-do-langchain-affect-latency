@@ -8,6 +8,8 @@ app = FastAPI()
 OLLAMA_API_URL = "http://localhost:11434/api/generate"
 MODEL_NAME = "llama3.1"
 
+client = httpx.AsyncClient()
+
 class GenerateRequest(BaseModel):
     prompt: str = Field("Tell me a short joke", description="Input text")
 
@@ -19,8 +21,7 @@ async def dummy_tool(input_text):
         "stream": False
     }
     start_time = time.time()
-    async with httpx.AsyncClient() as client:
-        response = await client.post(OLLAMA_API_URL, json=payload, timeout=60)
+    response = await client.post(OLLAMA_API_URL, json=payload, timeout=60)
     elapsed = time.time() - start_time
 
     if response.status_code == 200:
